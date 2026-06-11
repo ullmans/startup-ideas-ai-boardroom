@@ -43,6 +43,9 @@ class Idea(BaseModel):
 class IdeaList(BaseModel):
     ideas: list[Idea] = Field(description="List of exactly 4 top ideas that survived the debate.")
 
+class TopIdeas(BaseModel):
+    ideas: list[Idea] = Field(description="List of exactly 3 top ideas selected for final debate.")
+
 # ==========================================
 # 3. Robust API Calls with Tenacity (Optimized for 429)
 # ==========================================
