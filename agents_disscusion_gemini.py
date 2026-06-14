@@ -190,9 +190,11 @@ moderator = Agent(
 # 6. The Orchestrator Engine
 # ==========================================
 def run_dynamic_boardroom():
+    boardroom_dir = "boardrooms"
+    os.makedirs(boardroom_dir, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = f"boardroom_session_{timestamp}.txt"
+    log_filename = os.path.join(boardroom_dir, f"boardroom_session_{timestamp}.txt")
     
     print(f"=== Opening the Boardroom Doors ===")
     print(f"[System] Writing session live to: {log_filename}\n")

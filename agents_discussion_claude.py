@@ -52,8 +52,10 @@ MIN_DELAY_PAID = 1.2   # seconds
 
 CALL_DELAY = MIN_DELAY_PAID if PAID_TIER else MIN_DELAY_FREE
 
+BOARDROOM_DIR = "boardrooms"
+os.makedirs(BOARDROOM_DIR, exist_ok=True)
 TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
-LOG_FILE  = f"boardroom_evolution_{TIMESTAMP}.txt"
+LOG_FILE  = os.path.join(BOARDROOM_DIR, f"boardroom_evolution_{TIMESTAMP}.txt")
 
 
 # ══════════════════════════════════════════════════════════════

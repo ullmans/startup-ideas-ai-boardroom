@@ -212,9 +212,14 @@ INJECTED_IDEAS = [
 # 6. The Orchestrator Engine
 # ==========================================
 def run_dynamic_boardroom():
+    boardroom_dir = "boardrooms"
+    top_ideas_dir = "top_ideas"
+    os.makedirs(boardroom_dir, exist_ok=True)
+    os.makedirs(top_ideas_dir, exist_ok=True)
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = f"boardroom_session_{timestamp}.txt"
-    ideas_filename = f"top_ideas_{timestamp}.json"
+    log_filename = os.path.join(boardroom_dir, f"boardroom_session_{timestamp}.txt")
+    ideas_filename = os.path.join(top_ideas_dir, f"top_ideas_{timestamp}.json")
     
     print(f"=== Phase 1: Broad Idea Generation ===")
     print(f"[System] Writing session live to: {log_filename}\n")

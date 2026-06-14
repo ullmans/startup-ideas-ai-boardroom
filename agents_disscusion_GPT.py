@@ -22,7 +22,9 @@ MODEL = "gemini-2.5-flash"
 POPULATION_SIZE = 5
 GENERATIONS = 4
 
-LOG_FILE = "evolution_lowquota.jsonl"
+BOARDROOM_DIR = "boardrooms"
+os.makedirs(BOARDROOM_DIR, exist_ok=True)
+LOG_FILE = os.path.join(BOARDROOM_DIR, "evolution_lowquota.jsonl")
 
 # ==========================================
 # LOGGING

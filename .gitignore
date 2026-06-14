@@ -9,3 +9,11 @@ __pycache__/
 
 # Environment variables
 .env
+
+boardrooms/
+*.txt
+
+top_ideas/
+*.json
+
+.vscode/
