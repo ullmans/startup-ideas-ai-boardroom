@@ -109,6 +109,7 @@ class Agent:
         self.key = key
         self.name = name
         self.role = role
+        self.system_prompt = system_prompt
         self.system_instruction = (
             f"You are participating in Phase 1 of a live startup boardroom session. "
             f"Your role: {role}.\nInstructions: {system_prompt}\n"
@@ -119,11 +120,10 @@ class Agent:
             f"3. Keep your response short (2-3 sentences), pitching one clear product concept. Always answer in English."
         )
 
-    def speak(self, client, structured_history, valid_keys):
+    def speak(self, client, structured_history, valid_keys, phase_prompt="Pitch a NEW startup idea or pivot to a new domain. Do not critique current ideas."):
         prompt = (
             f"{structured_history}\n\n"
-            f"It is your turn to speak. Pitch a NEW startup idea or pivot to a new domain. "
-            f"Do not critique current ideas. Select the next speaker from this list: {valid_keys}. "
+            f"It is your turn to speak. {phase_prompt} Select the next speaker from this list: {valid_keys}. "
             f"Do not select yourself."
         )
 
@@ -417,7 +417,7 @@ def run_dynamic_boardroom():
     debate_history = [intro]
     debate_log = [intro]
     next_agent_key = "critic"
-    debate_turns = 12
+    debate_turns = 100
     
     for turn in range(debate_turns):
         current_agent = agents[next_agent_key]
